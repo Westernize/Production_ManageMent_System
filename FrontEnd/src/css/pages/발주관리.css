@@ -1,0 +1,1391 @@
+﻿@import "../components/erp-button.css";
+
+/* 발주 관리 페이지 스타일 */
+.order-management-container {
+    width: 100%;
+    height: 100%;
+    background: #e5e5e5;
+    padding: 0;
+    box-sizing: border-box;
+    position: relative;
+    font-family: 'Malgun Gothic', '맑은 고딕', 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.order-management-wrapper {
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.order-management-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    background: #f0f0f0;
+    border-bottom: 1px solid #a0a0a0;
+    flex-shrink: 0;
+    gap: 12px;
+}
+
+.header-left-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.date-range-filter {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 0px;
+    background: #ffffff;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    height: 26px;
+    box-sizing: border-box;
+}
+
+.date-input {
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    padding: 8px 8px;
+    font-size: 13px;
+    color: #374151;
+    background-color: #fff;
+    outline: none;
+    height: 26px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.date-input::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    opacity: 0.6;
+    width: 14px;
+    height: 14px;
+}
+
+.date-input::-webkit-calendar-picker-indicator:hover {
+    opacity: 1;
+}
+
+.date-separator {
+    color: #9ca3af;
+    font-size: 11px;
+    font-weight: 400;
+    padding: 0 2px;
+}
+
+.page-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #000000;
+    margin: 0;
+}
+
+.header-buttons {
+    display: flex;
+    gap: 4px;
+}
+
+/* 상단(헤더) 등록/삭제 버튼: 테두리 제거 */
+.order-management-header .header-buttons .excel-btn {
+    border: none;
+}
+
+.order-management-header .header-buttons .excel-btn:focus,
+.order-management-header .header-buttons .excel-btn:focus-visible {
+    outline: none;
+}
+
+
+
+.statistics-info {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    background: #ffffff;
+    border: 2px solid #3b82f6;
+    border-radius: 16px;
+    font-size: 10px;
+    font-family: 'Malgun Gothic', '맑은 고딕', 'Arial', sans-serif;
+    margin-left: 8px;
+    white-space: nowrap;
+    box-shadow: none;
+    height: 24px;
+    box-sizing: border-box;
+}
+
+.stat-label {
+    color: #3b82f6;
+    font-weight: 500;
+}
+
+.stat-value {
+    color: #3b82f6;
+    font-weight: 700;
+    min-width: 18px;
+    text-align: right;
+}
+
+.stat-unit {
+    color: #3b82f6;
+    font-weight: 500;
+}
+
+.filter-toggle-btn {
+    padding: 4px 12px;
+    font-size: 11px;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    background: #ffffff;
+    color: #374151;
+    height: 24px;
+    box-sizing: border-box;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.filter-toggle-btn:hover {
+    background: #f9fafb;
+    border-color: #9ca3af;
+}
+
+.filter-toggle-btn span {
+    white-space: nowrap;
+}
+
+.advanced-filter-panel {
+    background: #f8f9fa;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 12px;
+    position: absolute;
+    top: 35px;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.filter-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.filter-field {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.filter-field-keyword {
+    margin-left: 40px;
+}
+
+.filter-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: #374151;
+    white-space: nowrap;
+    min-width: 65px;
+}
+
+.filter-select,
+.filter-input {
+    padding: 4px 8px;
+    border: 1px solid #d1d5db;
+    border-radius: 3px;
+    font-size: 11px;
+    font-family: 'Malgun Gothic', '맑은 고딕', 'Arial', sans-serif;
+    color: #1f2937;
+    background: #ffffff;
+    height: 26px;
+    box-sizing: border-box;
+    transition: all 0.15s;
+}
+
+.filter-select {
+    min-width: 110px;
+    cursor: pointer;
+}
+
+.filter-input {
+    width: 100px;
+}
+
+.filter-select:focus,
+.filter-input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+}
+
+.filter-select:hover,
+.filter-input:hover {
+    border-color: #9ca3af;
+}
+
+.filter-actions {
+    display: flex;
+    gap: 6px;
+    margin-left: 20px;
+}
+
+.filter-search-btn {
+    padding: 4px 16px;
+    font-size: 11px;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid #2563eb;
+    border-radius: 3px;
+    background: #2563eb;
+    color: #ffffff;
+    height: 26px;
+    box-sizing: border-box;
+    transition: all 0.2s;
+}
+
+.filter-search-btn:hover {
+    background: #1d4ed8;
+    border-color: #1d4ed8;
+}
+
+.filter-search-btn:active {
+    background: #1e40af;
+    border-color: #1e40af;
+}
+
+.filter-reset-btn {
+    padding: 4px 16px;
+    font-size: 11px;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid #ef4444;
+    border-radius: 3px;
+    background: #ffffff;
+    color: #ef4444;
+    height: 26px;
+    box-sizing: border-box;
+    transition: all 0.2s;
+}
+
+.filter-reset-btn:hover {
+    background: #fef2f2;
+}
+
+.filter-reset-btn:active {
+    background: #fee2e2;
+}
+
+/* 메인 콘텐츠 레이아웃 */
+.order-content-layout {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+}
+
+/* 왼쪽: 목록 패널 - 이름을 customer-list-panel로 변경, 거래처관리 스타일 사용 */
+.customer-list-panel {
+    /* width: 60%; 삭제 (order-detail-panel 40%와 일치) */
+    border-right: 1px solid #a0a0a0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.customer-list-panel .list-table-wrapper .filter-slide {
+    display: none;
+    position: absolute;
+    top: 41px;
+    left: 0;
+    right: 0;
+    z-index: 60;
+}
+
+.customer-list-panel .list-table-wrapper .filter-slide.open {
+    display: block;
+}
+
+
+.customer-list-panel .advanced-filter-panel {
+    position: relative;
+    z-index: 60;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.customer-list-panel .filter-slide .advanced-filter-panel {
+    position: relative !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+}
+
+.customer-list-panel .advanced-filter-panel .filter-row {
+    flex-wrap: wrap;
+    row-gap: 10px;
+    column-gap: 12px;
+    align-items: flex-end;
+}
+
+.customer-list-panel .advanced-filter-panel .filter-field-keyword {
+    margin-left: 0;
+}
+
+.customer-list-panel .advanced-filter-panel .filter-actions {
+    margin-left: auto;
+    flex: 0 0 auto;
+}
+
+.customer-list-panel .advanced-filter-panel .search-bar-inline .search-input {
+    width: 315px !important;
+    min-width: auto !important;
+}
+.customer-list-panel .advanced-filter-panel .search-bar-inline .search-select {
+    width: 90px !important;
+    min-width: auto !important;
+}
+
+.list-table-wrapper {
+    flex: 1;
+    overflow-y: auto;
+    /* 사업장관리와 동일하게 가로 스크롤 허용 (컬럼 잘림 방지) */
+    overflow-x: auto;
+    border: 1px solid #a0a0a0;
+    border-top: none;
+    border-right: none;
+    min-height: 0;
+    position: relative;
+}
+
+/* 오른쪽: 상세 정보 패널 - 이름을 customer-detail-panel로 변경, 거래처관리 스타일 사용 */
+.order-detail-panel {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: #ffffff;
+    position: relative;
+}
+
+.detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    background: #f0f0f0;
+    border-bottom: 1px solid #a0a0a0;
+    flex-shrink: 0;
+}
+
+.detail-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 8px;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.detail-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 10px 12px;
+    background: #ffffff;
+    border-top: 2px solid #e5e7eb;
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    z-index: 100;
+    flex-shrink: 0;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.detail-meta-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px;
+    background: #f8fafc;
+    border: 1px dashed #cbd5e1;
+    border-radius: 6px;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 8px;
+    border-radius: 999px;
+    font-size: 11px;
+    .filter-select, .search-box input {
+        padding: 4px;
+        border: 1px solid #d1d5db;
+        border-radius: 3px;
+        font-size: 12px;
+    }
+    letter-spacing: 0.2px;
+}
+
+.badge-new {
+    background: #ecfeff;
+    color: #0ea5e9;
+    border: 1px solid #bae6fd;
+}
+
+.badge-edit {
+    background: #eef2ff;
+    color: #4f46e5;
+    border: 1px solid #c7d2fe;
+}
+
+.badge-success {
+    background: #dcfce7;
+    color: #16a34a;
+    border: 1px solid #86efac;
+}
+
+.meta-text {
+    font-size: 11px;
+    color: #475569;
+}
+
+.detail-sections-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.section-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    gap: 8px;
+}
+
+.section-subtext {
+    font-size: 10px;
+    color: #6b7280;
+    margin-top: 2px;
+}
+
+.section-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.pill {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 999px;
+    border: 1px solid #d1d5db;
+    background: #ffffff;
+    color: #111827;
+}
+
+.pill-soft {
+    background: #f8fafc;
+    border-color: #e2e8f0;
+    color: #334155;
+}
+
+.form-grid {
+    display: grid;
+    gap: 8px;
+}
+
+.form-grid-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.form-grid-1 {
+    grid-template-columns: 1fr;
+}
+
+.ghost-btn {
+    padding: 6px 10px;
+    font-size: 10px;
+    font-weight: 600;
+    border: 1px solid #d1d5db;
+    background: #ffffff;
+    color: #111827;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.ghost-btn:hover:not(:disabled) {
+    background: #f8fafc;
+    border-color: #94a3b8;
+}
+
+.ghost-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.delete-btn {
+    color: #ef4444;
+    border-color: #ef4444;
+}
+
+.delete-btn:hover:not(:disabled) {
+    background: #fef2f2;
+    border-color: #dc2626;
+    color: #dc2626;
+}
+
+/* 폼 섹션 */
+.form-section {
+    background: #fafbfc;
+    border: 1px solid #e5e7eb;
+    padding: 10px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+    flex-shrink: 0;
+}
+
+.section-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #374151;
+    margin-bottom: 8px;
+    padding-bottom: 4px;
+    border-bottom: 2px solid #3b82f6;
+    display: inline-block;
+    min-width: 80px;
+}
+
+.form-field-inline {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.form-field-inline label {
+    font-size: 10px;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 0;
+}
+
+.form-field-inline input,
+.form-field-inline textarea {
+    padding: 4px 8px;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    font-size: 11px;
+    font-family: 'Malgun Gothic', '맑은 고딕', 'Arial', sans-serif;
+    color: #1f2937;
+    background: #ffffff;
+    box-sizing: border-box;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+    height: 28px;
+    width: 100%;
+    transition: all 0.2s;
+}
+
+.form-field-inline textarea {
+    resize: vertical;
+    min-height: 50px;
+    height: auto;
+    padding: 4px 8px;
+}
+
+.form-field-inline input:hover {
+    border-color: #9ca3af;
+}
+
+.form-field-inline input:focus,
+.form-field-inline textarea:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1), inset 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.form-field-inline input:disabled,
+.form-field-inline textarea:disabled {
+    background: #f3f4f6;
+    color: #6b7280;
+    cursor: not-allowed;
+}
+
+.material-lookup-input {
+    cursor: pointer;
+    background: #ffffff;
+}
+
+.material-lookup-input:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* 자재 목록 섹션 */
+.material-list-section {
+    display: flex;
+    flex-direction: column;
+    min-height: 200px;
+    max-height: 400px;
+    background: #fafbfc;
+    border: 1px solid #e5e7eb;
+    padding: 10px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+    margin-top: 12px;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.section-header-with-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0 8px 0;
+    background: transparent;
+    border-bottom: 2px solid #000000;
+    flex-shrink: 0;
+    margin-bottom: 8px;
+}
+
+.section-header {
+    font-size: 12px;
+    font-weight: 700;
+    color: #374151;
+}
+
+.section-buttons {
+    display: flex;
+    gap: 4px;
+}
+
+.table-wrapper {
+    flex: 1;
+    overflow-y: auto;
+    /* 자재목록도 컬럼 잘리지 않도록 가로 스크롤 허용 */
+    overflow-x: auto;
+    min-height: 0;
+}
+
+.excel-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11px;
+    font-family: 'Malgun Gothic', '맑은 고딕', 'Arial', sans-serif;
+}
+
+/* 발주 목록 테이블 - 패널 너비에 맞게 고정 */
+.order-list-panel .excel-table {
+    table-layout: fixed;
+    width: 100%;
+}
+
+.excel-th {
+    background: #d9e1f2;
+    border: 1px solid #a0a0a0;
+    padding: 6px 8px;
+    font-weight: 600;
+    color: #000000;
+    text-align: center;
+    white-space: nowrap;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.excel-th input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    margin: 0 auto;
+    display: block;
+}
+
+.excel-th:first-child {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.excel-tr {
+    background: #ffffff;
+    cursor: pointer;
+}
+
+.excel-tr:hover {
+    background: #f0f7ff;
+}
+
+.excel-tr.selected {
+    background: #d0e8ff;
+}
+
+.excel-td {
+    border: 1px solid #d0d0d0;
+    padding: 6px 8px;
+    vertical-align: middle;
+    background: #ffffff;
+    font-size: 11px;
+    color: #000000;
+}
+
+.excel-tr.selected .excel-td {
+    background: #d0e8ff;
+}
+
+.excel-td input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    margin: 0 auto;
+    display: block;
+
+}
+
+.excel-td:first-child {
+    text-align: center;
+    vertical-align: middle;
+    padding: 6px 8px;
+}
+
+.excel-td input[type="checkbox"]:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.excel-td-number {
+    background: #f5f5f5;
+    text-align: center;
+    font-weight: 400;
+    width: 50px;
+    min-width: 50px;
+}
+
+.excel-tr.selected .excel-td-number {
+    background: #d0e8ff;
+}
+
+.excel-tr.total-row {
+    background: #f0f4f8;
+    font-weight: 600;
+}
+
+.excel-tr.total-row .excel-td {
+    background: #f0f4f8;
+    border-top: 2px solid #a0a0a0;
+}
+
+.excel-tr.selected .excel-td-number {
+    background: #d0e8ff;
+}
+
+/* 발주 목록 테이블용 헤더 스타일 */
+.order-th {
+    background: #d9e1f2;
+    border: 1px solid #a0a0a0;
+    padding: 6px 8px;
+    font-weight: 600;
+    color: #000000;
+    text-align: center;
+    white-space: nowrap;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.order-th.sortable {
+    cursor: pointer;
+    position: relative;
+    padding-right: 20px; /* Space for sort icon */
+}
+
+.order-th.sortable:hover {
+    background-color: #c0cff7; /* Lighter blue on hover */
+}
+
+.sort-icon {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 10px;
+    color: #3b82f6; /* Blue icon */
+}
+
+
+.order-th input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    margin: 0 auto;
+    display: block;
+}
+
+/* 발주 목록 테이블용 셀 스타일 */
+.order-td {
+    border: 1px solid #d0d0d0;
+    padding: 6px 8px;
+    vertical-align: middle;
+    background: #ffffff;
+    font-size: 11px;
+    color: #000000;
+    text-align: center;
+}
+
+.excel-tr.selected .order-td {
+    background: #d0e8ff;
+}
+
+.order-td input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    margin: 0 auto;
+    display: block;
+
+}
+
+.order-td:first-child {
+    text-align: center;
+    vertical-align: middle;
+    padding: 6px 8px;
+}
+
+.order-td input[type="checkbox"]:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.excel-tr.selected .order-td.excel-td-number {
+    background: #d0e8ff;
+}
+
+/* 발주 목록 테이블 컬럼 너비 - 퍼센트로 패널에 맞춤 */
+.order-list-panel .excel-th:nth-child(1),
+.order-list-panel .excel-td:nth-child(1) {
+    width: 5%; /* No */
+}
+
+.order-list-panel .excel-th:nth-child(2),
+.order-list-panel .excel-td:nth-child(2) {
+    width: 17%; /* 발주번호 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.order-list-panel .excel-th:nth-child(3),
+.order-list-panel .excel-td:nth-child(3) {
+    width: 12%; /* 매입처 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.order-list-panel .excel-th:nth-child(4),
+.order-list-panel .excel-td:nth-child(4) {
+    width: 12%; /* 자재코드 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.order-list-panel .excel-th:nth-child(5),
+.order-list-panel .excel-td:nth-child(5) {
+    width: 18%; /* 자재명 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.order-list-panel .excel-th:nth-child(6),
+.order-list-panel .excel-td:nth-child(6) {
+    width: 12%; /* 금액 */
+    text-align: right;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.order-list-panel .excel-th:nth-child(7),
+.order-list-panel .excel-td:nth-child(7) {
+    width: 8%; /* 담당자 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.order-list-panel .excel-th:nth-child(8),
+.order-list-panel .excel-td:nth-child(8) {
+    width: 10%; /* 발주일자 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.order-list-panel .excel-th:nth-child(9),
+.order-list-panel .excel-td:nth-child(9) {
+    width: 6%; /* 상태 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* 자재 목록 테이블용 셀 스타일 */
+.material-td {
+    border: 1px solid #d0d0d0;
+    padding: 6px 8px;
+    vertical-align: middle;
+    background: #ffffff;
+    font-size: 11px;
+    color: #000000;
+    text-align: center;
+}
+
+.excel-tr.selected .material-td {
+    background: #d0e8ff;
+}
+
+.material-td input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 3px;
+    border: 1px solid #666666; /* 연한 블랙 계열 테두리 */
+    background-color: #ffffff; /* 클릭 전: 흰 배경 */
+    cursor: pointer;
+    margin: 0 auto;
+    display: block;
+    position: relative;
+}
+
+.material-td input[type="checkbox"]::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -55%);
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.material-td input[type="checkbox"]:checked {
+    background-color: #3b728c; /* 클릭 후: 색 채워짐 */
+    border-color: #555555;     /* 클릭 후: 살짝 더 진한 블랙 계열 */
+}
+
+.material-td:first-child {
+    text-align: center;
+    vertical-align: middle;
+    padding: 6px 8px;
+}
+
+.material-td input[type="checkbox"]:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.excel-tr.total-row .material-td {
+    background: #f0f4f8;
+    border-top: 2px solid #a0a0a0;
+}
+
+.excel-tr.selected .material-td.excel-td-number {
+    background: #d0e8ff;
+}
+
+/* 왼쪽 발주 목록(리스트) 글자 조금 작게 조정 */
+.customer-list-panel .excel-th,
+.customer-list-panel .excel-td,
+.customer-list-panel .order-th,
+.customer-list-panel .order-td {
+    font-size: 9px;
+}
+
+/* ===== 오른쪽 상세의 '발주 자재 목록' 테이블 전용 크기 축소 ===== */
+.purchase-item-table-wrapper .purchase-item-table {
+    table-layout: fixed;
+    width: 100%;
+}
+
+.purchase-item-table-wrapper .purchase-item-table .excel-th,
+.purchase-item-table-wrapper .purchase-item-table .excel-td,
+.purchase-item-table-wrapper .purchase-item-table .order-th,
+.purchase-item-table-wrapper .purchase-item-table .order-td {
+    padding: 4px 6px;   /* 기본보다 살짝 줄이기 */
+    font-size: 10px;    /* 왼쪽 목록보다 약간 작게 */
+    line-height: 1.2;
+}
+
+.purchase-item-table-wrapper .purchase-item-table .excel-td-number,
+.purchase-item-table-wrapper .purchase-item-table .order-td.excel-td-number {
+    width: 46px;
+}
+
+/* 각 컬럼 너비 조정 (체크박스 / No / 코드 / 자재명 / 단위 / 수량 / 단가 / 금액) */
+.purchase-item-table-wrapper .purchase-item-table .excel-th:nth-child(1),
+.purchase-item-table-wrapper .purchase-item-table .excel-td:nth-child(1) {
+    width: 6%;   /* 체크박스 */
+}
+
+.purchase-item-table-wrapper .purchase-item-table .excel-th:nth-child(2),
+.purchase-item-table-wrapper .purchase-item-table .excel-td:nth-child(2) {
+    width: 8%;   /* No */
+}
+
+.purchase-item-table-wrapper .purchase-item-table .excel-th:nth-child(3),
+.purchase-item-table-wrapper .purchase-item-table .excel-td:nth-child(3) {
+    width: 16%;  /* 코드(자재코드) */
+}
+
+.purchase-item-table-wrapper .purchase-item-table .excel-th:nth-child(4),
+.purchase-item-table-wrapper .purchase-item-table .excel-td:nth-child(4) {
+    width: 30%;  /* 자재명 */
+}
+
+.purchase-item-table-wrapper .purchase-item-table .excel-th:nth-child(5),
+.purchase-item-table-wrapper .purchase-item-table .excel-td:nth-child(5) {
+    width: 10%;  /* 단위 */
+}
+
+.purchase-item-table-wrapper .purchase-item-table .excel-th:nth-child(6),
+.purchase-item-table-wrapper .purchase-item-table .excel-td:nth-child(6) {
+    width: 10%;  /* 수량 */
+}
+
+.purchase-item-table-wrapper .purchase-item-table .excel-th:nth-child(7),
+.purchase-item-table-wrapper .purchase-item-table .excel-td:nth-child(7) {
+    width: 10%;  /* 단가 */
+}
+
+.purchase-item-table-wrapper .purchase-item-table .excel-th:nth-child(8),
+.purchase-item-table-wrapper .purchase-item-table .excel-td:nth-child(8) {
+    width: 10%;  /* 금액 */
+}
+
+/* 자재 목록 테이블 컬럼 너비 - 비율로 조정하여 스크롤바 없이 영역에 맞게 표시 */
+.material-list-section .excel-th:nth-child(1),
+.material-list-section .material-td:nth-child(1) {
+    width: 8%;
+    max-width: 8%;
+}
+
+.material-list-section .excel-th:nth-child(2),
+.material-list-section .material-td:nth-child(2) {
+    width: 8%;
+    max-width: 8%;
+}
+
+.material-list-section .excel-th:nth-child(3),
+.material-list-section .material-td:nth-child(3) {
+    width: 12%;
+    max-width: 12%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.material-list-section .excel-th:nth-child(4),
+.material-list-section .material-td:nth-child(4) {
+    width: 26%;
+    max-width: 26%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.material-list-section .excel-th:nth-child(5),
+.material-list-section .material-td:nth-child(5) {
+    width: 10%;
+    max-width: 10%;
+}
+
+.material-list-section .excel-th:nth-child(6),
+.material-list-section .material-td:nth-child(6) {
+    width: 12%;
+    max-width: 12%;
+}
+
+.material-list-section .excel-th:nth-child(7),
+.material-list-section .material-td:nth-child(7) {
+    width: 12%;
+    max-width: 12%;
+}
+
+.material-list-section .excel-th:nth-child(8),
+.material-list-section .material-td:nth-child(8) {
+    width: 12%;
+    max-width: 12%;
+}
+
+/* ===== 자재목록보기 팝업(자재 목록 (품목관리)) 전용 테이블 크기 축소 ===== */
+.material-master-popup .material-master-table {
+    table-layout: fixed;
+    width: 100%;
+}
+
+.material-master-popup .material-master-table .excel-th,
+.material-master-popup .material-master-table .excel-td {
+    padding: 3px 4px;      /* 팝업 안에서만 더 작게 */
+    font-size: 11px;       /* 팝업 글자 크기 (주문관리와 동일) */
+    line-height: 1.2;
+}
+
+.material-master-popup .material-master-table .excel-td-number {
+    width: 40px;
+    min-width: 40px;
+}
+
+/* 팝업 각 컬럼 너비 조정 (체크박스 / No / 자재코드 / 자재명 / 규격 / 단위 / 단가) */
+.material-master-popup .material-master-table .excel-th:nth-child(1),
+.material-master-popup .material-master-table .excel-td:nth-child(1) {
+    width: 6%;   /* 체크박스 */
+}
+
+.material-master-popup .material-master-table .excel-th:nth-child(2),
+.material-master-popup .material-master-table .excel-td:nth-child(2) {
+    width: 8%;   /* No */
+}
+
+.material-master-popup .material-master-table .excel-th:nth-child(3),
+.material-master-popup .material-master-table .excel-td:nth-child(3) {
+    width: 18%;  /* 자재코드 */
+}
+
+.material-master-popup .material-master-table .excel-th:nth-child(4),
+.material-master-popup .material-master-table .excel-td:nth-child(4) {
+    width: 30%;  /* 자재명 */
+}
+
+.material-master-popup .material-master-table .excel-th:nth-child(5),
+.material-master-popup .material-master-table .excel-td:nth-child(5) {
+    width: 18%;  /* 규격 */
+}
+
+.material-master-popup .material-master-table .excel-th:nth-child(6),
+.material-master-popup .material-master-table .excel-td:nth-child(6) {
+    width: 10%;  /* 단위 */
+}
+
+.material-master-popup .material-master-table .excel-th:nth-child(7),
+.material-master-popup .material-master-table .excel-td:nth-child(7) {
+    width: 10%;  /* 단가 */
+}
+
+/* ===== 거래처 선택(구매처) 팝업 전용 table-wrapper/테이블 폭 축소 ===== */
+.purchase-cust-popup .purchase-cust-table-wrapper .purchase-cust-table {
+    table-layout: fixed;
+    width: 100%;
+}
+
+.purchase-cust-popup .purchase-cust-table-wrapper .purchase-cust-table .excel-th,
+.purchase-cust-popup .purchase-cust-table-wrapper .purchase-cust-table .excel-td {
+    padding: 4px 6px;      /* 공통보다 살짝 줄인 여백 */
+    font-size: 11px;
+    line-height: 1.2;
+}
+
+.purchase-cust-popup .purchase-cust-table-wrapper .purchase-cust-table .excel-td-number {
+    width: 46px;
+}
+
+/* 컬럼 폭: 선택 / No / 거래처코드 / 거래처명 / 대표자 / 사업자번호 / 담당자 / 전화번호 */
+.purchase-cust-popup .purchase-cust-table-wrapper .purchase-cust-table .excel-th:nth-child(1),
+.purchase-cust-popup .purchase-cust-table-wrapper .purchase-cust-table .excel-td:nth-child(1) {
+    width: 6%;   /* 선택(라디오) */
+}
+
+.purchase-cust-popup .purchase-cust-table-wrapper .purchase-cust-table .excel-th:nth-child(2),
+.purchase-cust-popup .purchase-cust-table-wrapper .purchase-cust-table .excel-td:nth-child(2) {
+    width: 8%;   /* No */
+}
+
+.purchase-cust-popup .purchase-cust-table-wrapper .purchase-cust-table .excel-th:nth-child(3),
+.purchase-cust-popup .purchase-cust-table-wrapper .purchase-cust-table .excel-td:nth-child(3) {
+    width: 14%;  /* 거래처코드 */
+}
+
+.purchase-cust-popup .purchase-cust-table-wrapper .purchase-cust-table .excel-th:nth-child(4),
+.purchase-cust-popup .purchase-cust-table-wrapper .purchase-cust-table .excel-td:nth-child(4) {
+    width: 22%;  /* 거래처명 */
+}
+
+.purchase-cust-popup .purchase-cust-table-wrapper .purchase-cust-table .excel-th:nth-child(5),
+.purchase-cust-popup .purchase-cust-table-wrapper .purchase-cust-table .excel-td:nth-child(5) {
+    width: 12%;  /* 대표자 */
+}
+
+.purchase-cust-popup .purchase-cust-table-wrapper .purchase-cust-table .excel-th:nth-child(6),
+.purchase-cust-popup .purchase-cust-table-wrapper .purchase-cust-table .excel-td:nth-child(6) {
+    width: 14%;  /* 사업자번호 */
+}
+
+.purchase-cust-popup .purchase-cust-table-wrapper .purchase-cust-table .excel-th:nth-child(7),
+.purchase-cust-popup .purchase-cust-table-wrapper .purchase-cust-table .excel-td:nth-child(7) {
+    width: 12%;  /* 담당자 */
+}
+
+.purchase-cust-popup .purchase-cust-table-wrapper .purchase-cust-table .excel-th:nth-child(8),
+.purchase-cust-popup .purchase-cust-table-wrapper .purchase-cust-table .excel-td:nth-child(8) {
+    width: 12%;  /* 전화번호 */
+}
+
+/* 거래처 선택 팝업의 라디오 버튼을 네모 형태로 변경 */
+.purchase-cust-popup .purchase-cust-table-wrapper .purchase-cust-table input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 3px;
+    border: 1px solid #666666; /* 연한 블랙 계열 테두리 */
+    background-color: #ffffff; /* 클릭 전: 흰 배경 */
+    cursor: pointer;
+    position: relative;
+    margin: 0;
+    vertical-align: middle;
+}
+
+.purchase-cust-popup .purchase-cust-table-wrapper .purchase-cust-table input[type="radio"]:checked {
+    background-color: #3b728c; /* 클릭 후: 색 채워짐 */
+    border-color: #555555;     /* 클릭 후: 살짝 더 진한 블랙 계열 */
+}
+
+.purchase-cust-popup .purchase-cust-table-wrapper .purchase-cust-table input[type="radio"]:checked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -55%);
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 1;
+}
+
+/* 팝업 스타일 */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-content {
+    background: #ffffff;
+    border: 1px solid #a0a0a0;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: clamp(320px, 80%, 720px); /* responsive width */
+    max-width: 720px;
+    max-height: 80vh;
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background: #f0f0f0;
+    border-bottom: 1px solid #a0a0a0;
+    flex-shrink: 0;
+}
+
+.popup-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #000000;
+    margin: 0;
+}
+
+.popup-close-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #666;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+.popup-close-btn:hover {
+    color: #000;
+    background: #e0e0e0;
+    border-radius: 3px;
+}
+
+.popup-body {
+    flex: 1;
+    padding: 16px;
+    overflow-y: auto;
+    min-height: 0;
+}
+
+.popup-footer {
+    padding: 12px 16px;
+    background: #f0f0f0;
+    border-top: 1px solid #a0a0a0;
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.status-color-complete {
+    color: #2563eb; /* 선명한 블루 */
+}
+
+.status-color-partial {
+    color: #7c3aed; /* 보라색 - 부분입고 */
+    font-weight: 600;
+}
+
+.status-color-pending {
+    color: #ea580c; /* 주황 */
+}
+
+.status-color-confirmed {
+    color: #16a34a; /* 초록 */
+}
+
+.status-color-cancelled {
+    color: #dc2626; /* 빨강 */
+}
